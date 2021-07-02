@@ -20,10 +20,11 @@ public class UsoEmpleado {
         System.out.println("Nombre: " + empleado3.getNombre() + " Sueldo: " + empleado3.getSueldo()
         + " Fecha de Alta: " + empleado3.getFechaContrato());*/
 
-        Empleado[] misEmpleados = new Empleado[3];
+        Empleado[] misEmpleados = new Empleado[4];
         misEmpleados[0] = new Empleado("Frida Benitez", 3000, 1996, 04, 18);
         misEmpleados[1] = new Empleado("Daniela Valdez", 6000, 1995, 11, 06);
         misEmpleados[2] = new Empleado("Mariza Cisneros", 3000, 1993, 03, 18);
+        misEmpleados[3] = new Empleado("Flor Estevez");
 
         /*for (int i = 0; i < misEmpleados.length; i++) {
             misEmpleados[i].subeSueldo(5);
@@ -60,6 +61,10 @@ class Empleado {
         GregorianCalendar calendario = new GregorianCalendar(agno, mes-1, dia);
 
         altaContrato = calendario.getTime();
+    }
+
+    public Empleado(String nom) {
+        this(nom, 3000, 2000, 02, 02);
     }
 
     //GETTERS
