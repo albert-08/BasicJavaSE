@@ -85,6 +85,27 @@ class Empleado {
 
     public void subeSueldo(double porcentaje) {
         double aumento = sueldo*porcentaje/100;
-        sueldo+=aumento;
+        sueldo += aumento;
     }
+}
+
+class Jefatura extends Empleado {
+    private double incentivo;
+
+    public Jefatura(String nom, double sue, int agno, int mes, int dia) {
+        super(nom, sue, agno, mes, dia);
+    }
+
+    //SETTERS
+
+    public void setIncentivo(double b) {
+        incentivo = b;
+    }
+
+    //GETTERS
+
+    public double getSueldo() {
+        double sueldoJefe = super.getSueldo();
+        return sueldoJefe + incentivo;
+    }    
 }
