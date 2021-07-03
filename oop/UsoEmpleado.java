@@ -20,11 +20,16 @@ public class UsoEmpleado {
         System.out.println("Nombre: " + empleado3.getNombre() + " Sueldo: " + empleado3.getSueldo()
         + " Fecha de Alta: " + empleado3.getFechaContrato());*/
 
-        Empleado[] misEmpleados = new Empleado[4];
+        Jefatura jefe_RRHH = new Jefatura("Frida", 1803, 1996, 03, 18);
+        jefe_RRHH.setIncentivo(1803);
+
+        Empleado[] misEmpleados = new Empleado[6];
         misEmpleados[0] = new Empleado("Frida Benitez", 3000, 1996, 04, 18);
         misEmpleados[1] = new Empleado("Daniela Valdez", 6000, 1995, 11, 06);
         misEmpleados[2] = new Empleado("Mariza Cisneros", 3000, 1993, 03, 18);
-        misEmpleados[3] = new Empleado("Flor Estevez");
+        misEmpleados[3] = new Empleado("Flor Estevez", 47500, 2009, 11, 9);
+        misEmpleados[4] = jefe_RRHH; //Polimorfismo en acción. Princípio de sustitución
+        misEmpleados[5] = new Jefatura("Natalia", 2000, 2018, 8, 8);
 
         /*for (int i = 0; i < misEmpleados.length; i++) {
             misEmpleados[i].subeSueldo(5);
