@@ -1,5 +1,6 @@
 package oop;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -31,6 +32,9 @@ public class UsoEmpleado {
         misEmpleados[4] = jefe_RRHH; //Polimorfismo en acción. Princípio de sustitución
         misEmpleados[5] = new Jefatura("Natalia", 2000, 2018, 8, 8);
 
+        Jefatura jefa_Finanzas = (Jefatura) misEmpleados[5];
+        jefa_Finanzas.setIncentivo(5000);
+
         /*for (int i = 0; i < misEmpleados.length; i++) {
             misEmpleados[i].subeSueldo(5);
         }*/
@@ -45,19 +49,24 @@ public class UsoEmpleado {
             + " Fecha de Alta: " +misEmpleados[i].getFechaContrato());
         }*/
 
+        Arrays.sort(misEmpleados);
+
         for (Empleado empleado : misEmpleados) {
             System.out.println("Nombre: " + empleado.getNombre()
+            + " Id: " + empleado.getId()
             + " Sueldo: " + empleado.getSueldo()
             + " Fecha de Alta: " + empleado.getFechaContrato());
         }
     }
 }
 
-class Empleado {
+class Empleado implements Comparable{
 
     private String nombre;
     private double sueldo;
     private Date altaContrato;
+    private int Id;
+    private static int IdSiguiente = 0;
 
     public Empleado(String nom, double sue, int agno, int mes, int dia) {
         nombre = nom;
@@ -66,6 +75,9 @@ class Empleado {
         GregorianCalendar calendario = new GregorianCalendar(agno, mes-1, dia);
 
         altaContrato = calendario.getTime();
+        
+        ++ IdSiguiente;
+        Id = IdSiguiente;
     }
 
     public Empleado(String nom) {
@@ -86,11 +98,29 @@ class Empleado {
         return altaContrato;
     }
 
+    public int getId() {
+        return Id;
+    }
+
     //SETTERS
 
     public void subeSueldo(double porcentaje) {
         double aumento = sueldo*porcentaje/100;
         sueldo += aumento;
+    }
+
+    public int compareTo(Object miObjeto) {
+        Empleado otroEmpleado = (Empleado) miObjeto;
+
+        if (this.sueldo < otroEmpleado.sueldo) {
+            return -1;
+        }
+
+        if (this.sueldo > otroEmpleado.sueldo) {
+            return 1;
+        }
+
+        return 0;
     }
 }
 
