@@ -34,7 +34,11 @@ public class UsoEmpleado {
 
         Jefatura jefa_Finanzas = (Jefatura) misEmpleados[5];
         jefa_Finanzas.setIncentivo(5000);
+        System.out.println(jefa_Finanzas.tomarDecisiones("Dar más días de vacaciones a los empleados"));
+        
+        System.out.println("El Jefe " + jefa_Finanzas.getNombre() + " tiene un bonus de: " + jefa_Finanzas.setBonus(500));
 
+        System.out.println(misEmpleados[3].getNombre() + " tiene un bonus de: " + misEmpleados[3].setBonus(200));
         /*for (int i = 0; i < misEmpleados.length; i++) {
             misEmpleados[i].subeSueldo(5);
         }*/
@@ -60,7 +64,7 @@ public class UsoEmpleado {
     }
 }
 
-class Empleado implements Comparable{
+class Empleado implements Comparable, Trabajadores {
 
     private String nombre;
     private double sueldo;
@@ -122,13 +126,27 @@ class Empleado implements Comparable{
 
         return 0;
     }
+
+    @Override
+    public double setBonus(double gratificacion) {
+        return Trabajadores.bonusBase + gratificacion;
+    }
 }
 
-class Jefatura extends Empleado {
+class Jefatura extends Empleado implements Jefes {
     private double incentivo;
 
     public Jefatura(String nom, double sue, int agno, int mes, int dia) {
         super(nom, sue, agno, mes, dia);
+    }
+
+    public String tomarDecisiones(String decision) {
+        return "Un miembro de la dirección ha tomado la decisión de: " + decision;
+    }
+
+    public double setBonus(double gratificacion) {
+        double prima = 2000;
+        return Trabajadores.bonusBase + gratificacion + prima;
     }
 
     //SETTERS

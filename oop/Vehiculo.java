@@ -12,7 +12,7 @@ public class Vehiculo {
 		miFurgoneta.setClimatizador("Si");
 
 		System.out.println(miCoche.getString() + miCoche.getColor());
-		System.out.println(miFurgoneta.getString() + miFurgoneta.getString());
+		System.out.println(miFurgoneta.getString() + miFurgoneta.getColor());
 	}
 
 }
