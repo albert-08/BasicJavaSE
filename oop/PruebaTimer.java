@@ -2,6 +2,8 @@ package oop;
 
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+
+import java.awt.Toolkit;
 import java.awt.event.*;
 import java.util.Date;
 
@@ -21,7 +23,9 @@ class GetHora implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Date now = new Date();
-        System.out.println("Te pongo la hora cada 5 seg: " + now);        
+        System.out.println("Te pongo la hora cada 5 seg: " + now);
+        
+        Toolkit.getDefaultToolkit().beep();
     }
   
 }
